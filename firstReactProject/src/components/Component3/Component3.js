@@ -3,14 +3,16 @@ import {
   AppRegistry,
   Text,
   View,
-  TextInput
+  TextInput,
+  Switch
 } from 'react-native'
 
 export default class Component3 extends Component{
     constructor(){
       super();
       this.state = {
-        textValue: 'Hello'
+        textValue: 'Hello',
+        switchValue: false
       }
     }
     onChangeText(value){
@@ -22,6 +24,12 @@ export default class Component3 extends Component{
     onSubmit(){
       console.log('Input Submitted...');
     }
+
+    onSwitchChange(value){
+      this.setState({
+        switchValue:value
+      });
+    }
   render(){
     return(
       <View>
@@ -32,6 +40,10 @@ export default class Component3 extends Component{
           onSubmitEditing={this.onSubmit}
         />
         <Text>{this.state.textValue}</Text>
+        <Switch 
+          value={this.state.switchValue}
+          onValueChange={(value) => this.onSwitchChange(value)}
+        />
       </View>
     );
   }
